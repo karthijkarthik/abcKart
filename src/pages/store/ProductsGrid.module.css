@@ -1,0 +1,12 @@
+.p__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-gap: 15px;
+}
+
+.item {
+    border: 1px solid #000000 !important;
+    float: left;
+    width: 100%;
+    margin: 0 10px 10px;
+}
