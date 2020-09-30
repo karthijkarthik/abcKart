@@ -1,6 +1,7 @@
 .header {
+    display: flex;
+    justify-content: space-between;
     padding: 10px;
-    text-align: center;
 }
 
 a {
@@ -12,4 +13,13 @@ a {
 a svg {
     width: 18px;
     margin-right: 5px;
+}
+
+.logo {
+    width: 15%;
+}
+
+.menuContainer {
+    align-items: center;
+    display: flex;
 }

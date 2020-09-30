@@ -10,8 +10,8 @@ const Layout = ({title, description, children}) => {
     return ( 
         <>
         <Helmet>
-            <title>{ title ? title + " - abc Kart" : "abc Kart" }</title>
-            <meta name = "description" content={ description || "ABC Kart" } />
+            <title>{ title ? title + " - abc Cart" : "abc Cart" }</title>
+            <meta name = "description" content={ description || "ABC Cart" } />
         </Helmet>
         <Header/>
         <main className="container">

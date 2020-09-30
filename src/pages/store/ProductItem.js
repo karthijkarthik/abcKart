@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { CartContext } from '../../contexts/CartContext';
-import { formatNumber } from '../../helpers/utils';
 import styles from './ProductsGrid.module.css';
 
 const ProductItem = ({product}) => {
@@ -17,7 +16,7 @@ const ProductItem = ({product}) => {
             <img style={{display: "block", margin: "0 auto 10px", maxHeight: "200px"}} className="img-fluid" 
             src={product.photo} alt=""/>
             <p>{product.name}</p>
-            <h3 className="text-left">{formatNumber(product.price)}</h3>
+            <h3 className="text-left">₹{product.price}</h3>
             <div className="text-right">
                 <Link  to="/" className="btn btn-link btn-sm mr-2">Details</Link>
 

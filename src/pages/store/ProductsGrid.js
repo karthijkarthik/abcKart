@@ -25,9 +25,6 @@ const ProductsGrid = () => {
                 }
 
             </div>
-            <div className={styles.p__footer}>
-
-            </div>
         </div>
      );
 }
