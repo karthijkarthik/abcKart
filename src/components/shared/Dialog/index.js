@@ -37,7 +37,6 @@ const DialogTitle = withStyles(styles)((props) => {
 });
 
 const Transition = React.forwardRef(function Transition(props, ref) {
-    console.log(props)
     return <Slide direction="down" ref={ref} {...props} />;
 });
 
@@ -45,7 +44,7 @@ export default function DialogComponent(props) {
   const { open, onClose, title,  children} = props;
   return (
     <div>
-        <Dialog aria-labelledby="customized-dialog-title" TransitionComponent={Transition} open={open} onClose={onClose}>
+        <Dialog maxWidth="lg" aria-labelledby="customized-dialog-title" TransitionComponent={Transition} open={open} onClose={onClose}>
             <DialogTitle id="customized-dialog-title" onClose={onClose}>
                 {title}
             </DialogTitle>

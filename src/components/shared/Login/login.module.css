@@ -1,0 +1,12 @@
+.registerLink {
+    color: #a3011a;
+    cursor: pointer;
+    float: left;
+    font-size: 14px;
+    margin: 15px 0;
+}
+
+.error {
+    color: red;
+    font-size: 13px;
+}

@@ -19,7 +19,7 @@ const ProductsGrid = () => {
             <div className={styles.p__grid}>
 
                 {
-                    products.map(product => (
+                    products && products.map(product => (
                         <ProductItem key={product.id} product={product}/>
                     ))
                 }
