@@ -1,26 +1,29 @@
 import React, { useContext } from 'react';
+import PropTypes from 'prop-types';
+
 import { PlusCircleIcon, MinusCircleIcon, TrashIcon } from '../../components/icons'
 import { CartContext } from '../../contexts/CartContext';
 
 const CartItem = ({product}) => {
 
     const { increase, decrease, removeProduct } = useContext(CartContext);
+    const { name, photo, price, quantity } = product;
 
     return ( 
         <div className="row no-gutters py-2">
             <div className="col-sm-2 p-2">
                 <img
-                alt={product.name}
+                alt={name}
                 style={{margin: "0 auto", maxHeight: "50px"}} 
-                src={product.photo} className="img-fluid d-block"/>
+                src={photo} className="img-fluid d-block"/>
             </div>
             <div className="col-sm-4 p-2">
-                <h5 className="mb-1">{product.name}</h5>
-                <p className="mb-1">Price: ₹{product.price} </p>
+                <h5 className="mb-1">{name}</h5>
+                <p className="mb-1">Price: ₹{price} </p>
                 
             </div>
             <div className="col-sm-2 p-2 text-center ">
-                 <p className="mb-0">Qty: {product.quantity}</p>
+                 <p className="mb-0">Qty: {quantity}</p>
             </div>
             <div className="col-sm-4 p-2 text-right">
                  <button 
@@ -30,7 +33,7 @@ const CartItem = ({product}) => {
                  </button>
 
                  {
-                     product.quantity > 1 &&
+                     quantity > 1 &&
                      <button
                     onClick={() => decrease(product)}
                     className="btn btn-danger btn-sm mb-1">
@@ -39,7 +42,7 @@ const CartItem = ({product}) => {
                  }
 
                 {
-                     product.quantity === 1 &&
+                     quantity === 1 &&
                      <button
                     onClick={() => removeProduct(product)}
                     className="btn btn-danger btn-sm mb-1">
@@ -52,4 +55,8 @@ const CartItem = ({product}) => {
      );
 }
  
+CartItem.propTypes = {
+    product: PropTypes.object
+}
+
 export default CartItem;

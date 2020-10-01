@@ -11,6 +11,7 @@ import { CartContext } from '../../contexts/CartContext';
 import DialogComponent from "./Dialog";
 import styles from './header.module.css';
 import Login from './Login';
+import Register from './Register';
 
 const StyledBadge = withStyles((theme) => ({
     badge: {
@@ -29,6 +30,7 @@ const Header = () => {
     const [open, setOpen] = React.useState(false);
     const [isLoggedIn, setLoginStatus] = React.useState(false);
     const [loggedUser, setLoggedUser] = React.useState({});
+    const [isRegister, setIsRegister] = React.useState(false);
 
     const handleClickOpen = () => {
         setOpen(true);
@@ -46,6 +48,10 @@ const Header = () => {
         setLoggedUser(value);
     }
 
+    const toggleForm = (status) => {
+        setIsRegister(status);
+    }
+    console.log("isRegister", isRegister);
     return ( 
         <header className={`${styles.header} container`}>
             <Link to='/'><img src={require("../../assets/logo.png")} alt="abcKart" className={styles.logo} /></Link>
@@ -53,10 +59,11 @@ const Header = () => {
                 <Link to='/about'>About</Link>
                 {isLoggedIn ? 
                     <Chip
-                        variant="outlined"
                         size="small"
                         icon={<FaceIcon />}
-                        label={`Welcome ${loggedUser}`}
+                        label={`Welcome ${loggedUser.name}`}
+                        color="secondary"
+                        style={{ fontWeight: 'bold' }}
                     /> :
                     <Link onClick={handleClickOpen}>Login</Link>}
                 <Link to='/cart'> 
@@ -67,11 +74,15 @@ const Header = () => {
                     </IconButton>
                 </Link>
             </div>
-            <DialogComponent open={open} title="Login" onClose={handleClose}>
-                <Login 
-                    onClose={handleClose} 
-                    logStatus={toggleLoginStatus}
-                    setUserDetails={handleLoggedUser} />
+            <DialogComponent open={open} title={isRegister ? "Register" : "Login"} onClose={handleClose}>
+                {isRegister ? 
+                    <Register setRegister={toggleForm}  /> :
+                    <Login 
+                        onClose={handleClose} 
+                        logStatus={toggleLoginStatus}
+                        setUserDetails={handleLoggedUser}
+                        setRegister={toggleForm} />
+                }
             </DialogComponent>
         </header>
     );

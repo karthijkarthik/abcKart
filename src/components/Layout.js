@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import Header from './shared/header';
 import Footer from './shared/footer';
 
@@ -20,6 +22,12 @@ const Layout = ({title, description, children}) => {
         <Footer/>
         </>
      );
+}
+
+Layout.propTypes = {
+    title: PropTypes.string.isRequired,
+    description: PropTypes.string.isRequired,
+    children: PropTypes.element
 }
  
 export default Layout;

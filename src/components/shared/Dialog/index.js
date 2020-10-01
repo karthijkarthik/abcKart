@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Dialog from '@material-ui/core/Dialog';
 import MuiDialogTitle from '@material-ui/core/DialogTitle';
@@ -41,7 +42,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 });
 
 export default function DialogComponent(props) {
-  const { open, onClose, title,  children} = props;
+  const { open, onClose, title, children} = props;
   return (
     <div>
         <Dialog maxWidth="lg" aria-labelledby="customized-dialog-title" TransitionComponent={Transition} open={open} onClose={onClose}>
@@ -54,4 +55,11 @@ export default function DialogComponent(props) {
         </Dialog>
     </div>
   );
+}
+
+DialogComponent.propTypes = {
+  open: PropTypes.bool.isRequired,
+  onClose: PropTypes.func,
+  title: PropTypes.string.isRequired,
+  children: propTypes.element
 }

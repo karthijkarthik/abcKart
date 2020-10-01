@@ -1,4 +1,6 @@
 import React, { createContext, useReducer } from 'react';
+import PropTypes from 'prop-types';
+
 import { CartReducer, sumItems } from './CartReducer';
 
 export const CartContext = createContext()
@@ -50,6 +52,10 @@ const CartContextProvider = ({children}) => {
             { children }
         </CartContext.Provider>
      );
+}
+
+CartContextProvider.propTypes = {
+    children: PropTypes.element.isRequired
 }
  
 export default CartContextProvider;

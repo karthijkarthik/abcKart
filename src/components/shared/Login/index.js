@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Formik } from 'formik';
 import axios from 'axios';
 import { Grid, TextField, Button } from '@material-ui/core';
@@ -8,7 +9,8 @@ import styles from './login.module.css';
  const Login = ({
    onClose, 
    logStatus,
-   setUserDetails
+   setUserDetails,
+   setRegister
   }) => (
    <div>
       <Formik
@@ -32,8 +34,7 @@ import styles from './login.module.css';
           );
           if(result.data.length > 0) {
             logStatus(true);
-            console.log(result.data)
-            setUserDetails(result.data);
+            setUserDetails(result.data[0]);
             onClose();
           } else {
             errors.invalidUser = 'Please register using email id to login';
@@ -85,13 +86,20 @@ import styles from './login.module.css';
               color="primary"
               disabled={isSubmitting}
             >Login</Button>
-            {errors.invalidUser && errors.invalidUser}
+            <span className={styles.error}>{errors.invalidUser && errors.invalidUser}</span>
           </Grid>
         </form>
        )}
      </Formik>
-    <span className={styles.registerLink}>New to abcCart? Create an account</span>
+    <span className={styles.registerLink} onClick={() => setRegister(true)}>New to abcCart? Create an account</span>
    </div>
  );
+
+ Login.propTypes = {
+  onClose: PropTypes.func,
+  logStatus: PropTypes.func,
+  setUserDetails: PropTypes.func,
+  setRegister: PropTypes.func
+ }
  
  export default Login;
